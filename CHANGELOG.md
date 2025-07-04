@@ -5,9 +5,17 @@ The format is based on [keep a changelog](http://keepachangelog.com) and this pr
 
 ## [Unreleased]
 
+### Changed
+- New Satori cache flag configuration parameter to require disabling by default.
+
+### Fixed
+- Fix an issue where a purchased Google Subscription would not be looked up by the LinkedPurchaseToken field contained in a notification.
+- Improve Satori caching to prevent incorrect hits.
+
 ## [3.27.1] - 2025-05-22
 ### Changed
 - Minor dependency updates.
+- Decorate request context in authentication after hooks.
 
 ## [3.27.0] - 2025-05-12
 ### Added

@@ -5040,7 +5040,7 @@ func (n *RuntimeLuaNakamaModule) notificationSend(l *lua.LState) int {
 	content := string(contentBytes)
 
 	code := l.CheckInt(4)
-	if code <= 0 {
+	if code <= 0 && !(-2000 <= code && code <= -1000) {
 		l.ArgError(4, "expects code number to be a positive integer")
 		return 0
 	}
@@ -9488,7 +9488,7 @@ func (n *RuntimeLuaNakamaModule) groupUsersKick(l *lua.LState) int {
 // @param name(type=string) Search for groups that contain this value in their name.
 // @param langTag(type=string, optional=true) Filter based upon the entered language tag.
 // @param open(type=bool) Filter based on whether groups are Open or Closed.
-// @param edgeCount(type=number) Search by number of group members.
+// @param edgeCount(type=number) Search groups with an equal or lower number of members in descending order.
 // @param limit(type=number, optional=true, default=100) Return only the required number of groups denoted by this limit value.
 // @param cursor(type=string, optional=true, default="") Pagination cursor from previous result. Don't set to start fetching from the beginning.
 // @return cursor(string) An optional next page cursor that can be used to retrieve the next page of records (if any). Will be set to "" or nil when fetching last available page.
